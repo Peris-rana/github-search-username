@@ -1,0 +1,111 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Noto Sans Mono', monospace;
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans',
+      Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+}
+
+:root {
+   --white: #f0f6fc;
+   --gray: rgb(220, 220, 220, 0.3);
+   --black: #0d1117;
+   --green: #42b72a;
+}
+body {
+   background-color: var(--black);
+}
+.container {
+   position: relative;
+   padding: 5%;
+   margin-top: 5%;
+}
+/* header component start */
+header i {
+   color: var(--white);
+}
+header {
+   text-align: center;
+   margin-top: 10px;
+}
+header h2 {
+   text-align: center;
+   color: var(--white);
+   margin-top: 10px;
+}
+/* header component finish */
+
+/* form start */
+main {
+   display: flex;
+   justify-content: center;
+   text-align: center;
+}
+main form {
+   margin-top: 30px;
+}
+main input[type='text'],
+form button {
+   display: block;
+   height: 50px;
+   padding: 10x;
+   width: 18rem;
+   border-radius: 8px;
+   outline: none;
+   border: none;
+   padding: 14px;
+}
+main input[type='text'],
+main input[type='text']::placeholder {
+   font-size: 19px;
+}
+form button {
+   margin-top: 10px;
+   background-color: var(--green);
+   font-size: 19px;
+   cursor: pointer;
+   color: var(--white);
+}
+/* form end */
+/* result */
+#for-result {
+   color: var(--white);
+   text-align: center;
+   padding: 10px;
+   gap: 20px;
+   display: none;
+   margin: 2rem;
+   border: 1px solid var(--gray);
+}
+
+img {
+   height: 300px;
+   width: 300px;
+   margin: 9px;
+   border-radius: 50%;
+}
+#for-result h2 {
+   color: var(--white);
+}
+
+a {
+   color: var(--gray);
+   word-wrap: break-word;
+}
+.api-data {
+   padding: 10px;
+}
+/* responsve image */
+@media screen and (max-width: 620px) {
+   .container {
+      margin-top: 30%;
+   }
+   img {
+      height: 150px;
+      width: 150px;
+   }
+   #for-result {
+      margin: 2rem;
+   }
+}
