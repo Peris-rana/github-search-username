@@ -12,14 +12,18 @@ form.addEventListener('submit', (e) => {
       fetch('https://api.github.com/users/' + searchValueNoSpace)
          .then((result) => result.json())
          .then((data) => {
-            console.table(data);
-            const forResult = document.getElementById('for-result');
-            forResult.style.display = 'block';
-            forResult.innerHTML = `<div>
+            if (data.message === 'Not Found') {
+               alert(`No such user as ${searchValue} please try again.`);
+            } else {
+               console.table(data);
+               const dispName = data.name !== null ? data.name : searchValue;
+               const forResult = document.getElementById('for-result');
+               forResult.style.display = 'block';
+               forResult.innerHTML = `<div>
           <img src = "${data.avatar_url}"></img>
           </div>
           <div>
-          <h2>${data.name}</h2>
+          <h2>${dispName}</h2>
           </div>
           </div>
           <div class= "api-data">
@@ -29,6 +33,8 @@ form.addEventListener('submit', (e) => {
           <a href= "${data.html_url}">${data.repos_url}</a>
           </div>
           `;
-         });
+            }
+         })
+         .catch((err) => console.log(err.message));
    }
 });

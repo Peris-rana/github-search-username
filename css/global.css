@@ -48,22 +48,25 @@ main form {
 main input[type='text'],
 form button {
    display: block;
-   height: 50px;
-   padding: 10x;
-   width: 18rem;
+   height: 40px;
+   width: 20rem;
    border-radius: 8px;
    outline: none;
    border: none;
-   padding: 14px;
+   padding: 19px;
+   margin: 4px 0 10px;
+}
+form button {
+   padding: 5px 16px;
 }
 main input[type='text'],
 main input[type='text']::placeholder {
-   font-size: 19px;
+   font-size: 14px;
 }
 form button {
    margin-top: 10px;
    background-color: var(--green);
-   font-size: 19px;
+   font-size: 14  px;
    cursor: pointer;
    color: var(--white);
 }
