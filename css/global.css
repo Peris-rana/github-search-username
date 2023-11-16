@@ -53,7 +53,7 @@ form button {
    border-radius: 8px;
    outline: none;
    border: none;
-   padding: 19px;
+   padding: 0 12px;
    margin: 4px 0 10px;
 }
 form button {
@@ -66,7 +66,7 @@ main input[type='text']::placeholder {
 form button {
    margin-top: 10px;
    background-color: var(--green);
-   font-size: 14  px;
+   font-size: 14 px;
    cursor: pointer;
    color: var(--white);
 }
@@ -87,17 +87,65 @@ img {
    width: 300px;
    margin: 9px;
    border-radius: 50%;
+   border: 2px solid var(--gray);
 }
-#for-result h2 {
+
+#for-result,
+h2,
+.smallname {
    color: var(--white);
+   text-align: left;
+   letter-spacing: 0.2px;
+}
+.profile-container h2 {
+   font-size: 24px;
+}
+.small-name {
+   font-weight: thin;
+   opacity: 0.4;
+   text-transform: capitalize;
+   font-size: 20px;
 }
 
 a {
    color: var(--gray);
    word-wrap: break-word;
 }
-.api-data {
-   padding: 10px;
+.profile-container {
+   margin-top: 30px;
+   display: flex;
+   gap: 6rem;
+}
+li {
+   list-style-type: none;
+   border: 1px solid var(--gray);
+   text-align: left;
+   height: 130px;
+   width: 406px;
+   padding: 14px;
+   border-radius: 5px;
+   position: relative;
+}
+li a {
+   color: #2f81f7;
+   text-decoration: none;
+}
+.repos li span {
+   position: absolute;
+   top: 14px;
+   right: 10px;
+   border: 1px solid var(--gray);
+   padding: 0 7px;
+   border-radius: 2em;
+   text-transform: capitalize;
+   color: var(--white);
+   opacity: 0.7;
+}
+.repos {
+   display: grid;
+   grid-template-columns: auto auto;
+   row-gap: 1rem;
+   column-gap: 1rem;
 }
 /* responsve image */
 @media screen and (max-width: 620px) {
@@ -110,5 +158,20 @@ a {
    }
    #for-result {
       margin: 2rem;
+   }
+   .profile-container {
+      display: block;
+      text-align: center;
+   }
+   .profile-container h2 {
+      text-align: center;
+   }
+   .repos {
+      display: block;
+      column-gap: 100px;
+   }
+   li {
+      width: 100%;
+      margin: 15px 0;
    }
 }

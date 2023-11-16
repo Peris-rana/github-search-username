@@ -1,3 +1,4 @@
+const githubApi = 'https://api.github.com/users/';
 const form = document.querySelector('form');
 form.addEventListener('submit', (e) => {
    e.preventDefault();
@@ -9,7 +10,7 @@ form.addEventListener('submit', (e) => {
       alert('Add a username');
    } else {
       const searchValueNoSpace = searchValue.split(' ').join('-');
-      fetch('https://api.github.com/users/' + searchValueNoSpace)
+      fetch(githubApi + searchValueNoSpace)
          .then((result) => result.json())
          .then((data) => {
             if (data.message === 'Not Found') {
@@ -19,20 +20,33 @@ form.addEventListener('submit', (e) => {
                const dispName = data.name !== null ? data.name : searchValue;
                const forResult = document.getElementById('for-result');
                forResult.style.display = 'block';
-               forResult.innerHTML = `<div>
-          <img src = "${data.avatar_url}"></img>
-          </div>
-          <div>
-          <h2>${dispName}</h2>
-          </div>
-          </div>
-          <div class= "api-data">
-          <time>${data.created_at}</time>
-          </div>
-          <div>
-          <a href= "${data.html_url}">${data.repos_url}</a>
-          </div>
+               forResult.innerHTML = `
+               <div class="profile-container">
+               <div>
+                <img src = "${data.avatar_url}"></img>
+               <h2>${dispName}</h2>
+               <p class="small-name">${searchValueNoSpace}</p>
+               </div>
+               </div>
           `;
+               fetch(`${githubApi}${searchValueNoSpace}/repos`)
+                  .then((reposData) => {
+                     return reposData.json();
+                  })
+                  .then((data) => {
+                     const reposHtml = data.map(
+                        (data) =>
+                           `<li> <a href="${data.html_url}">${data.name}</a><span>public</span></li>`
+                     );
+
+                     const reposContainer = document.createElement('div');
+                     reposContainer.innerHTML = `<div class="repos">${reposHtml.join(
+                        ''
+                     )}</div>`;
+                     forResult
+                        .querySelector('.profile-container')
+                        .appendChild(reposContainer);
+                  });
             }
          })
          .catch((err) => console.log(err.message));
