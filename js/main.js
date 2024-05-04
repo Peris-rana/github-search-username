@@ -40,12 +40,13 @@ form.addEventListener('submit', (e) => {
                      );
 
                      const reposContainer = document.createElement('div');
-                     reposContainer.innerHTML = `<div class="repos">${reposHtml.join(
+                     reposContainer.innerHTML = `<div class="pop-repo">Popular repositories</div><div class="repos">${reposHtml.join(
                         ''
                      )}</div>`;
                      forResult
                         .querySelector('.profile-container')
                         .appendChild(reposContainer);
+                     reposContainer.scrollIntoView({ behavior: 'smooth' });
                   });
             }
          })
